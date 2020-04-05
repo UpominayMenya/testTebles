@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>My first Vue app</title>
+  <script src="https://unpkg.com/vue"></script>
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<body>
+  <div id = "main_block" class = "main_block">
+  	<table class = "table table-striped">
+	<tr><th>Задачи</th><th v-for="date in dateList"
+		><div class = "ReName" v-on:dblclick = "reName">{{ date }}</div><img class="ReName" src="delete.jpg" 
+  width="20" height="20" v-if = "vision" v-on:click = "deleteButt"></th></tr> 
+
+	<tr class = "container-sm"
+		v-for="task in taskList"
+		><td><div class="ReName" v-on:dblclick = "reName" >{{ task }}</div><img class="ReName" src="delete.jpg" 
+  width="20" height="20" v-if = "vision" v-on:click = "deleteButt"></td><td v-for="date in dateList" 
+								v-bind:class = Progress[task][date]
+		><select v-on:change = "Change">
+			<option value="none" hidden="">{{ Progress[task][date] }}</option>
+			<option value=""></option>
+ 			<option value="in work">in work</option>
+ 			<option value="test">test</option>
+ 			<option value="done">done</option>
+</select></td></tr> 	
+
+</table>
+
+<button  class="btn btn-primary" v-on:click = "addTask">Добавить задачу</button>
+<button  class="btn btn-primary" v-on:click = "addDate">Добавить дату</button>
+<button  class="btn btn-primary" v-on:click = "addConfig">Режим редактирования</button>
+<button  class="btn btn-primary" v-on:click = "setLocalStorage">Coхранить</button>
+
+
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
+
+
+
